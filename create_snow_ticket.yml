@@ -7,8 +7,9 @@
   tasks:
   #- name: include vars
   #  include_vars: change_request_vars.yml
-  - pip:
-    name: pysnow
+  - name: Install pip
+    pip:
+      name: pysnow
 
   - name: Create a change request
     snow_record:
