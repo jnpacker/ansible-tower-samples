@@ -22,7 +22,7 @@
       data:
         severity: "{{ sn_severity }}"
         priority: "{{ sn_priority }}"
-        short_description: "Packman has been deployed to: ..."
+        short_description: "Wordpress Application was updated:"
     register: new_incident
 
   - debug: 
