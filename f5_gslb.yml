@@ -7,17 +7,36 @@
   tasks:
   #- name: include vars
   #  include_vars: change_request_vars.yml
-  - name: Pip install pysnow
+  - name: Pip install certifi
     pip:
-      name: pysnow
-      extra_args: --user
+      name: certifi
+      extra_args: --user --upgrade
+  - name: Pip install kubernetes
+    pip:
+      name: kubernetes
+      extra_args: --user --upgrade
+  - name: Pip install openshift
+    pip:
+      name: openshift
+      extra_args: --user --upgrade
+  
   - name: Find my home
-    command: pwd
+    shell: pwd
   
   - name: Git repo pull
     git:
       repo: 'https://github.com/mdelder/f5-bd-gslb-tool.git'
       dest: /tmp/f5
       version: master
+  
   - name: Check output
     shell: ls -al /tmp/f5
+
+  #- name: Execute configuration
+  #  script: /tmp/f5/...
+
+  #- name: Execute configuration
+  #  command: ./mypythonscript.py
+  #  args:
+  #    chdir: /tmp/f5
+  #   run_once: true
