@@ -7,6 +7,10 @@
   tasks:
   #- name: include vars
   #  include_vars: change_request_vars.yml
+  - name: Pip install pysnow
+    pip:
+      name: pysnow
+      extra_args: --user
   - name: Find my home
     command: pwd
   
@@ -15,3 +19,5 @@
       repo: 'https://github.com/mdelder/f5-bd-gslb-tool.git'
       dest: /tmp/f5
       version: master
+  - name: Check output
+    command: ls /tmp/f5
