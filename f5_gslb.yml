@@ -20,4 +20,4 @@
       dest: /tmp/f5
       version: master
   - name: Check output
-    command: ls /tmp/f5
+    shell: ls -al /tmp/f5
