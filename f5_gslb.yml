@@ -23,11 +23,11 @@
   - name: Git repo pull
     git:
       repo: 'https://github.com/mdelder/f5-bd-gslb-tool.git'
-      dest: ./
+      dest: f5
       version: master
   
   - name: Check output
-    shell: ls
+    shell: ls -R ./f5
 
   #- name: Execute configuration
   #  script: ./src/
