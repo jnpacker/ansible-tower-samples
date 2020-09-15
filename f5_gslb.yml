@@ -1,0 +1,14 @@
+---
+- name: Configure endpoints
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  #- name: include vars
+  #  include_vars: change_request_vars.yml
+  - name: Git repo pull
+    git:
+      repo: 'https://github.com/mdelder/f5-bd-gslb-tool.git'
+      dest: /f5-gslb
+      version: master
