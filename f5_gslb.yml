@@ -3,10 +3,43 @@
   hosts: localhost
   gather_facts: no
   connection: local
+  vars:
+    target_clusters:
+      - juliet-alpha
+      - juliet-bravo
+    public_ips: []
+  
 
   tasks:
   #- name: include vars
   #  include_vars: change_request_vars.yml
+  - name: Show nslookup
+    debug: msg="{{ lookup('dig', 'multicloud-console.apps.'+item+'.demo.red-chesterfield.com').split(',') }}"
+    loop: "{{target_clusters}}"
+  
+  - set_fact: 
+      public_ips: "{{ public_ips + lookup('dig', 'multicloud-console.apps.'+item+'.demo.red-chesterfield.com').split(',') }}"
+    with_items: "{{target_clusters}}"
+  - debug: msg="{{ public_ips }}"
+  
+  - set_fact:
+      aws: {
+              "az1": "{{ public_ips[0] }}",
+              "az2": "{{ public_ips[1] }}"
+           }
+    when: (public_ips|length) == 2
+  
+  - set_fact:
+      aws: {
+              "az1": "{{ public_ips[0] }}",
+              "az2": "{{ public_ips[1] }}",
+              "az3": "{{ public_ips[2] }}",
+              "az4": "{{ public_ips[3] }}"
+           }
+    when: (public_ips|length) == 4
+  
+  - debug: msg="{{aws}}"
+
   - name: Pip install certifi
     pip:
       name: certifi
