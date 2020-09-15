@@ -20,23 +20,20 @@
       name: openshift
       extra_args: --user --upgrade
   
-  - name: Find my home
-    shell: pwd
-  
   - name: Git repo pull
     git:
       repo: 'https://github.com/mdelder/f5-bd-gslb-tool.git'
-      dest: /tmp/f5
+      dest: ./
       version: master
   
   - name: Check output
-    shell: ls -al /tmp/f5
+    shell: ls
 
   #- name: Execute configuration
-  #  script: /tmp/f5/...
+  #  script: ./src/
 
   #- name: Execute configuration
   #  command: ./mypythonscript.py
   #  args:
-  #    chdir: /tmp/f5
+  #    chdir: ./src/...
   #   run_once: true
