@@ -7,7 +7,11 @@
   tasks:
   #- name: include vars
   #  include_vars: change_request_vars.yml
+  - name: Find my home
+    command: pwd
+  
   - name: Git repo pull
     git:
       repo: 'https://github.com/mdelder/f5-bd-gslb-tool.git'
+      dest: /tmp/f5
       version: master
