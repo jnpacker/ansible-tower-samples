@@ -11,6 +11,7 @@
     pip:
       name: pysnow
       extra_args: --user
+  - debug: msg="Updating Application {{appName}} on {{target_clusters}}"
 
   - name: Create a change request
     snow_record:
