@@ -11,7 +11,7 @@
     pip:
       name: pysnow
       extra_args: --user
-  - debug: msg="Cluster create initiated. All clusters: {{target_clusters}}"
+  - debug: msg="Cluster {{action}}. All clusters: {{target_clusters}}"
 
   - name: Create a change request
     snow_record:
@@ -23,7 +23,7 @@
       data:
         severity: "{{ sn_severity }}"
         priority: "{{ sn_priority }}"
-        short_description: "Cluster create initiated. All clusters: {{target_clusters}}"
+        short_description: "Cluster {{action}} initiated. All clusters: {{target_clusters}}"
         register: new_incident
 
   - debug: 
