@@ -1,7 +1,9 @@
-- name: Hello World Sample
+- name: Hello World Sample 1min pause
   hosts: all
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World!"
-
+    - name: Pause for 5 minutes to build app cache
+      pause:
+      minutes: 1
